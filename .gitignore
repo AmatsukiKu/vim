@@ -1,0 +1,11 @@
+.DS_Store
+.vim/.VimballRecord
+.vim/.netrwhist
+.vim/.vimpos
+.vim/bundle/*
+.vim/doc/*
+.vim/view/*
+
+.vim/chalice/cache/*
+vimperator/info/*
+tooldata/*

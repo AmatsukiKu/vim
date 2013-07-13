@@ -1,0 +1,23 @@
+"3.1 (created: 2011/04/21 21:46:34)
+
+"source! "C:\\Users\\Kenji\\_vimperatorrc.local"
+
+" vim: set ft=vimperator:
+javascript liberator.beep = function() true
+inoremap <C-h> <BS>
+cnoremap <C-h> <BS>
+cnoremap <C-l> <del>
+inoremap <C-l> <del>
+nnoremap { <S-Esc>
+nnoremap <C-e> :eijiro 
+set nofocuscontent
+
+set hintchars=fjdksla;
+js<<EOM
+if (liberator.has("MacUnix")) {
+  liberator.execute("set editor=set editor='/usr/bin/mvim -f'");
+} else {
+  liberator.execute("set editor=gvim");
+  liberator.execute("noremap B :sb ブックマーク<CR>");
+}
+EOM
