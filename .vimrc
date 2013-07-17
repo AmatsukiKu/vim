@@ -28,6 +28,8 @@ NeoBundle 'Shougo/vimshell'
 NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-qfreplace'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-fontzoom'
 NeoBundle 'ZenCoding.vim'
 NeoBundle 'soh335/vim-ref-jquery'
 NeoBundle 'nono/jquery.vim'
@@ -46,7 +48,6 @@ NeoBundle 'mattn/learn-vimscript'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'mattn/googletranslate-vim'
 NeoBundle 'kana/vim-smartinput'
-NeoBundle 'thinca/vim-ref'
 
 filetype plugin indent on
 
