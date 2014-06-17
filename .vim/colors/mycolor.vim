@@ -12,28 +12,32 @@ let g:colors_name = "mycolor"
 " GUI Comment : #80a0ff = Light blue
 
 " GUI
-highlight Normal     guifg=white   guibg=Black
-highlight Search     guifg=Black   guibg=#990033  gui=bold
-highlight Visual     guifg=white   guibg=#666666
-highlight Cursor     guifg=Black   guibg=white    gui=bold
-highlight Special    guifg=Orange
-highlight Comment    guifg=#80a0ff
-highlight StatusLine guifg=Black   guibg=Gray     gui=NONE
-highlight Statement  guifg=Yellow                 gui=NONE
-highlight Type                                    gui=NONE
-highlight LineNr     guifg=white   guibg=black
-highlight Folded     guifg=white   guibg=#339900
+highlight Cursor       guifg=Black   guibg=white    gui=bold
+highlight Normal       guifg=white   guibg=Black
+highlight Search       guifg=Black   guibg=#990033  gui=bold
+highlight Visual       guifg=white   guibg=#666666
+highlight Special      guifg=Orange
+highlight Comment      guifg=#60b9ce
+highlight StatusLine   guifg=Black   guibg=Gray     gui=NONE
+highlight Statement    guifg=#ffeb40                gui=NONE
+highlight Type                                      gui=NONE
+highlight LineNr       guifg=white   guibg=black
+highlight CursorLineNr guifg=#ffeb40 guibg=black
+highlight Folded       guifg=white   guibg=#339900
+highlight Title        guifg=#e768ad
+highlight PreProc      guifg=#e768ad
+highlight Pmenu        guifg=#e768ad
 
 " Console
-highlight Normal     ctermfg=LightGrey  ctermbg=Black
-highlight Search     ctermfg=Black  ctermbg=Red  cterm=NONE
-highlight Visual                                 cterm=reverse
-highlight Cursor     ctermfg=Black  ctermbg=Green  cterm=bold
+highlight Normal     ctermfg=LightGrey ctermbg=Black
+highlight Search     ctermfg=Black     ctermbg=Red   cterm=NONE
+highlight Visual                                     cterm=reverse
+highlight Cursor     ctermfg=Black     ctermbg=Green cterm=bold
 highlight Special    ctermfg=Brown
 highlight Comment    ctermfg=Blue
-highlight StatusLine ctermfg=blue  ctermbg=white
-highlight Statement  ctermfg=Yellow      cterm=NONE
-highlight Type            cterm=NONE
+highlight StatusLine ctermfg=blue      ctermbg=white
+highlight Statement  ctermfg=Yellow                  cterm=NONE
+highlight Type                                       cterm=NONE
 
 " only for vim 5
 if has("unix")
