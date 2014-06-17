@@ -11,6 +11,7 @@ inoremap <C-l> <del>
 nnoremap { <S-Esc>
 nnoremap <C-e> :eijiro 
 set nofocuscontent
+set gui=nonavigation
 
 set hintchars=fjdksla;
 js<<EOM
