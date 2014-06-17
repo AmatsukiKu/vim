@@ -48,6 +48,7 @@ NeoBundle 'mattn/learn-vimscript'
 NeoBundle 'mattn/excitetranslate-vim'
 NeoBundle 'mattn/googletranslate-vim'
 NeoBundle 'kana/vim-smartinput'
+NeoBundle 'lilydjwg/colorizer'
 
 filetype plugin indent on
 
