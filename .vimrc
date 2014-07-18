@@ -25,6 +25,7 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimshell'
 NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'osyo-manga/vim-anzu'
+NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'vim-scripts/EasyMotion'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'motemen/git-vim'
@@ -95,8 +96,6 @@ set cmdheight=1
 set whichwrap=b,s,<,>,[,]
 set backspace=indent,eol,start
 set clipboard+=unnamed
-let &statusline = '%{cfi#format("[%s()]", "[no function]")}'
-set statusline+=\ %F%m%r%h%w\ format:%{&ff}\ type:%Y\ ASCII:\%03.3b\ HEX:\%02.2B\ pos:%l,%v,%p%%\ lines:%L
 set laststatus=2
 set matchpairs+=<:>
 set wildmenu
@@ -126,20 +125,36 @@ noremap <Space>rv :<C-u>RVview<CR>
 noremap <Space>rc :<C-u>RVcontroller<CR>
 noremap <Space>rm :<C-u>RVmodel<CR>
 nnoremap <leader>tt :<C-u>VimwikiToggleListItem<CR>
-nnoremap <C-g>f :echo cfi#format("%s", "")<CR>
 
 noremap <CR> i<CR><ESC>
 "noremap SS pkdd
 noremap <C-h> :<C-u>help<Space>
 noremap <Space>; A;<ESC>
 noremap <silent> <leader>r :source $MYVIMRC<CR>
-nnoremap <silent> <ESC><ESC> :<C-u>nohlsearch<CR>
 map <leader>q <Plug>(quickrun)
 imap <C-s> <Plug>(neosnippet_expand)
 inoremap <C-l> <delete>
 inoremap jj <ESC>
 cnoremap <C-h> <BS>
 cnoremap <C-l> <delete>
+
+nmap n <Plug>(anzu-n)
+nmap N <Plug>(anzu-N)
+nmap * <Plug>(anzu-star)
+nmap # <Plug>(anzu-sharp)
+nmap <ESC><ESC> :<C-u>nohlsearch<CR><Plug>(anzu-clear-search-status)
+
+let g:lightline = {
+    \ 'active': {
+        \ 'left': [['mode', 'modified'], ['absolutepath', 'readonly', 'function', 'anzu', 'position']],
+        \ 'right': [['wordcount', 'fileformat', 'fileencoding', 'filetype', 'ascii', 'hex']] },
+    \ 'component_function': {'anzu': 'anzu#search_status'},
+    \ 'component': {
+        \ 'position': '%3l/%L:%-2v',
+        \ 'hex': 'HEX:%B',
+        \ 'ascii': 'ASCII:%03.3b',
+        \ 'wordcount': 'wc:%{b:charCounterCount}',
+        \ 'function': '%{cfi#format("[%s()]", "[no function]")}'}}
 
 vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><CR>
 
@@ -356,9 +371,6 @@ nnoremap <silent> ~ :<C-u>call ExUpLower()<CR>
 " b:charCounterCount に文字数をセットするスクリプト
 " バッファを保存したりしたときに、更新される。
 "
-" ステータスラインに入れて使う例↓
-" set statusline=%{b:charCounterCount}
-set statusline+=\ wc:%{b:charCounterCount}
 
 if exists("anekos_charCounter")
     finish
