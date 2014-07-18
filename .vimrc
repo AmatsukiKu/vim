@@ -46,22 +46,22 @@ NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'thinca/vim-quickrun'
 
 "Web Development Plugins
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'basyura/unite-rails'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'nono/jquery.vim'
-NeoBundle 'soh335/vim-ref-jquery'
-NeoBundle 'slim-template/vim-slim'
+NeoBundleLazy 'mattn/emmet-vim',{"autoload": {"filetypes": ["html", "php", "erb"]}}
+NeoBundleLazy 'tpope/vim-rails', {"autoload": {"filetypes": ["rb", "erb"]}}
+NeoBundleLazy 'basyura/unite-rails', {"autoload": {"filetypes": ["rb", "erb"]}}
+NeoBundleLazy 'kchmck/vim-coffee-script', {"autoload": {"filetypes": ["coffee"]}}
+NeoBundleLazy 'nono/jquery.vim', {"autoload": {"filetypes": ["js", "jquery"]}}
+NeoBundleLazy 'soh335/vim-ref-jquery', {"autoload": {"filetypes": ["js", "jquery", "html", "php", "erb", "coffee"]}}
+NeoBundleLazy 'slim-template/vim-slim', {"autoload": {"filetypes": ["slim"]}}
 NeoBundle 'lilydjwg/colorizer'
 NeoBundle 'pasela/unite-webcolorname'
 NeoBundle 'koron/chalice'
 
 "Other Development
 NeoBundle 'msanders/cocoa.vim'
-NeoBundle 'vim-scripts/Processing'
-NeoBundle 'sudar/vim-arduino-syntax'
-NeoBundle 'tclem/vim-arduino'
+NeoBundleLazy 'vim-scripts/Processing', {"autoload": {"filetypes": ["pde"]}}
+NeoBundleLazy 'sudar/vim-arduino-syntax', {"autoload": {"filetypes": ["ino"]}}
+NeoBundleLazy 'tclem/vim-arduino', {"autoload": {"filetypes": ["ino"]}}
 
 filetype plugin indent on
 
@@ -291,7 +291,6 @@ function! s:bundle.hooks.on_source(bundle)
     let g:neosnippet#snippets_directory = s:dataPath.'snippets'
 endfunction
 unlet s:bundle
-
 
 let s:bundle = neobundle#get("emmet-vim")
 function! s:bundle.hooks.on_source(bundle)
