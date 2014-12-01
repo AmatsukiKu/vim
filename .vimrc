@@ -189,9 +189,11 @@ function! s:unite_my_settings()
     nnoremap <silent><buffer><expr> ff unite#do_action('vimfiler')
     nnoremap <silent><buffer><expr> ft unite#do_action('tabvimfiler')
     nnoremap <silent><buffer><expr> c unite#do_action('project_cd')
-    call unite#set_profile("", "ignorecase", 1)
-    call unite#set_profile("", "smartcase", 1)
 endfunction
+call unite#custom#profile('defulat', 'context', {
+    \ "ignorecase": 1,
+    \ "smartcase": 1,
+\ })
 
 
 let s:bundle = neobundle#get("vimfiler")
