@@ -80,7 +80,11 @@ set noerrorbells
 set novisualbell
 set visualbell t_vb=
 
-set relativenumber
+if v:version >= 703
+    set relativenumber
+else
+    set number
+end
 set autoindent
 set hlsearch
 set display=lastline
