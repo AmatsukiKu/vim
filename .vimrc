@@ -14,7 +14,15 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 "Common Plugins
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimproc', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'tsukkee/unite-help'
 NeoBundle 'mattn/learn-vimscript'
