@@ -8,8 +8,9 @@ filetype off
 filetype plugin indent off
 if has('vim_starting')
     set rtp+=~/.vim/bundle/neobundle.vim
-    call neobundle#rc(expand('~/.vim/bundle/'))
 endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 "Common Plugins
 NeoBundle 'Shougo/neobundle.vim'
@@ -63,6 +64,8 @@ NeoBundle 'msanders/cocoa.vim'
 NeoBundleLazy 'vim-scripts/Processing', {"autoload": {"filetypes": ["pde"]}}
 NeoBundleLazy 'sudar/vim-arduino-syntax', {"autoload": {"filetypes": ["ino"]}}
 NeoBundleLazy 'tclem/vim-arduino', {"autoload": {"filetypes": ["ino"]}}
+
+call neobundle#end()
 
 filetype plugin indent on
 
