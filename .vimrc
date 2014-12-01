@@ -7,8 +7,8 @@ set fileformat=unix "改行をUnix形式に
 filetype off
 filetype plugin indent off
 if has('vim_starting')
-    set rtp+=~/Dropbox/vim/.vim/bundle/neobundle.vim
-    call neobundle#rc(expand('~/Dropbox/vim/.vim/bundle/'))
+    set rtp+=~/.vim/bundle/neobundle.vim
+    call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
 "Common Plugins
@@ -320,7 +320,7 @@ autocmd BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 autocmd BufRead *.c,*.h,*.cpp,*.hpp if search('^#include <OpenGL\/','n')>0|call GL_mode()|endif
 function! GL_mode()
-  source ~/Dropbox/vim/.vim/ftplugin/opengl.vim
+  source ~/.vim/ftplugin/opengl.vim
   "set dictionary+=~/vimfiles/dict/opengl
 endfunction
 
