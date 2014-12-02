@@ -23,22 +23,22 @@ NeoBundle 'Shougo/vimproc', {
 \     'unix' : 'gmake',
 \    },
 \ }
-NeoBundle 'vim-scripts/sudo.vim'
-NeoBundle 'tsukkee/unite-help'
-NeoBundle 'mattn/learn-vimscript'
+NeoBundleLazy 'vim-scripts/sudo.vim', {'autoload' : {'commands' : [ "sudo" ] }}
+NeoBundleLazy 'tsukkee/unite-help', {'autoload' : {'commands' : [ "help" ] }}
+NeoBundleLazy 'mattn/learn-vimscript', {'autoload' : {'commands' : [ "help learn-vimscript" ] }}
 
 "UI Plugins
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'ujihisa/vimshell-ssh'
+NeoBundleLazy 'Shougo/vimfiler', {'autoload' : {'function_prefix' : [ "vimfiler" ] }}
+NeoBundleLazy 'Shougo/vimshell', {'autoload' : {'commands' : [ "VimShell" ] }}
+NeoBundleLazy 'ujihisa/vimshell-ssh', {'depends' : [ "Shougo/vimshell" ] }
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'vim-scripts/EasyMotion'
-NeoBundle 'thinca/vim-ref'
+NeoBundleLazy 'thinca/vim-ref', {'autoload' : {'commands' : [ "Ref" ] }}
 NeoBundle 'motemen/git-vim'
-NeoBundle 'vimwiki'
+NeoBundleLazy 'vimwiki', {'autoload' : {'function_prefix' : [ "vimwiki" ] }}
 
 "Visual Plugins
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -47,13 +47,13 @@ NeoBundle 'tyru/current-func-info.vim'
 
 "Edit Plugins
 NeoBundle 'kana/vim-smartinput'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundleLazy 'Shougo/neocomplcache', {'autoload' : {'insert': 1 }}
+NeoBundleLazy 'Shougo/neosnippet-snippets', {'depends' : [ "Shougo/neocomplcache" ] }
+NeoBundleLazy 'Shougo/neosnippet', {'depends' : [ "Shougo/neosnippet-snippets" ] }
 NeoBundle 'The-NERD-Commenter'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'thinca/vim-qfreplace'
-NeoBundle 'thinca/vim-quickrun'
+NeoBundleLazy 'thinca/vim-quickrun', {'autoload' : {'commands' : [ "QuickRun" ] }}
 
 "Web Development Plugins
 NeoBundleLazy 'mattn/emmet-vim',{"autoload": {"filetypes": ["html", "php", "erb"]}}
@@ -64,7 +64,7 @@ NeoBundleLazy 'nono/jquery.vim', {"autoload": {"filetypes": ["js", "jquery"]}}
 NeoBundleLazy 'soh335/vim-ref-jquery', {"autoload": {"filetypes": ["js", "jquery", "html", "php", "erb", "coffee"]}}
 NeoBundleLazy 'slim-template/vim-slim', {"autoload": {"filetypes": ["slim"]}}
 NeoBundle 'lilydjwg/colorizer'
-NeoBundle 'pasela/unite-webcolorname'
+NeoBundleLazy 'pasela/unite-webcolorname', {'depends' : [ "Shougo/unite.vim" ] }
 NeoBundle 'koron/chalice'
 
 "Other Development
@@ -176,18 +176,16 @@ vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><C
 "Directory Setting
 let s:dataPath = $HOME.'/Dropbox/vim/tooldata/'
 
-let s:bundle = neobundle#get("unite.vim")
-function! s:bundle.hooks.on_source(bundle)
-    let g:unite_source_file_mru_limit = 200
-    let g:unite_source_history_yank_enable = 1
-    noremap <silent> <Space><Space> :Unite file_mru file directory_mru<Return>
-    noremap <silent> <Space><S-Space> :Unite -no-quit file_mru file directory_mru<Return>
-    noremap <Space>ub :<C-u>Unite bookmark buffer<Return>
-    noremap <Space>uc :<C-u>Unite command<Return>
-    noremap <Space>uy :<C-u>Unite history/yank<CR>
-    "noremap <C-h> :<C-u>Unite help -start-insert<CR>
-endfunction
-unlet s:bundle
+" Unite Settings
+let g:unite_source_file_mru_limit = 200
+let g:unite_source_history_yank_enable = 1
+noremap <silent> <Space><Space> :Unite file_mru file directory_mru<Return>
+noremap <silent> <Space><S-Space> :Unite -no-quit file_mru file directory_mru<Return>
+noremap <Space>ub :<C-u>Unite bookmark buffer<Return>
+noremap <Space>uc :<C-u>Unite command<Return>
+noremap <Space>uy :<C-u>Unite history/yank<CR>
+"noremap <C-h> :<C-u>Unite help -start-insert<CR>
+
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
     imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
