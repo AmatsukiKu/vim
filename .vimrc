@@ -318,7 +318,7 @@ function! s:bundle.hooks.on_source(bundle)
 
     let g:ref_jquery_path = s:dataPath.'jqapi-latest/docs/'
     let g:ref_phpmanual_path = s:dataPath.'phpmanual/php-chunked-xhtml/'
-    let g:neosnippet#snippets_directory = s:dataPath.'snippets'
+    let g:neosnippet#snippets_directory = $HOME.'/.vim//snippets'
 endfunction
 unlet s:bundle
 

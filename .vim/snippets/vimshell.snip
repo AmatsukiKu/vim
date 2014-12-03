@@ -1,0 +1,10 @@
+snippet glcc
+    gcc -framework OpenGL -framework GLUT -framework Foundation 
+snippet glpp
+    gcc -framework OpenGL -framework GLUT -framework Foundation ${1} -lstdc++
+snippet javac
+    javac -J-Dfile.encoding=UTF-8 
+snippet convert
+    convert -size 256x256 -depth 8 gray:${1} $1.tiff
+snippet sass
+    sass --watch ${1}.sass:$1.css

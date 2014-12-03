@@ -1,0 +1,8 @@
+snippet     throw
+abbr        th
+    if(${1:cond}){
+        throw{
+            name: '${2:ErrorName}',
+            message: '${3:ErrorMessage}'
+        };
+    }
