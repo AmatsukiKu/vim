@@ -30,7 +30,7 @@ NeoBundleLazy 'mattn/learn-vimscript', {'autoload' : {'commands' : [ "help learn
 "UI Plugins
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundleLazy 'Shougo/vimfiler', {'autoload' : {'function_prefix' : [ "vimfiler" ] }}
+NeoBundleLazy 'Shougo/vimfiler', {'autoload' : {'function_prefix' : "vimfiler" }}
 NeoBundleLazy 'Shougo/vimshell', {'autoload' : {'commands' : [ "VimShell" ] }}
 NeoBundleLazy 'ujihisa/vimshell-ssh', {'depends' : [ "Shougo/vimshell" ] }
 NeoBundle 'osyo-manga/vim-anzu'
@@ -38,7 +38,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'vim-scripts/EasyMotion'
 NeoBundleLazy 'thinca/vim-ref', {'autoload' : {'commands' : [ "Ref" ] }}
 NeoBundle 'motemen/git-vim'
-NeoBundleLazy 'vimwiki', {'autoload' : {'function_prefix' : [ "vimwiki" ] }}
+NeoBundleLazy 'vimwiki', {'autoload' : {'function_prefix' : "vimwiki" }}
 
 "Visual Plugins
 NeoBundle 'ujihisa/unite-colorscheme'
