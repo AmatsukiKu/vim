@@ -146,7 +146,7 @@ noremap <CR> i<CR><ESC>
 noremap <C-h> :<C-u>help<Space>
 noremap <Space>; A;<ESC>
 noremap <silent> <leader>r :source $MYVIMRC<CR>
-map <leader>q <Plug>(quickrun)
+map <silent> <leader>q :<C-u>QuickRun<CR>
 imap <C-s> <Plug>(neosnippet_expand)
 inoremap <C-l> <delete>
 inoremap jj <ESC>
