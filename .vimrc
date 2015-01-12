@@ -38,7 +38,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'vim-scripts/EasyMotion'
 NeoBundleLazy 'thinca/vim-ref', {'autoload' : {'commands' : [ "Ref" ] }}
 NeoBundle 'motemen/git-vim'
-NeoBundleLazy 'vimwiki', {'autoload' : {'function_prefix' : "vimwiki" }}
+NeoBundleLazy 'vimwiki', {'autoload' : {'function_prefix' : "vimwiki", 'commands' : ['VimwikiIndex', 'VimwikiTabIndex'] }}
 
 "Visual Plugins
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -139,6 +139,7 @@ noremap <Space>vp :<C-u>VimShellPop<Return>
 noremap <Space>rv :<C-u>RVview<CR>
 noremap <Space>rc :<C-u>RVcontroller<CR>
 noremap <Space>rm :<C-u>RVmodel<CR>
+nnoremap <leader>ww :<C-u>VimwikiIndex<CR>
 nnoremap <leader>tt :<C-u>VimwikiToggleListItem<CR>
 
 noremap <CR> i<CR><ESC>
