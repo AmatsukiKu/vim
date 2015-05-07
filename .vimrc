@@ -56,7 +56,7 @@ NeoBundle 'thinca/vim-qfreplace'
 NeoBundleLazy 'thinca/vim-quickrun', {'autoload' : {'commands' : [ "QuickRun" ] }}
 
 "Web Development Plugins
-NeoBundleLazy 'mattn/emmet-vim',{"autoload": {"filetypes": ["html", "php", "erb"]}}
+NeoBundleLazy 'mattn/emmet-vim',{"autoload": {"filetypes": ["html", "xhtml", "php", "eruby"]}}
 NeoBundleLazy 'tpope/vim-rails', {"autoload": {"filetypes": ["rb", "erb"]}}
 NeoBundleLazy 'basyura/unite-rails', {"autoload": {"filetypes": ["rb", "erb"]}}
 NeoBundleLazy 'kchmck/vim-coffee-script', {"autoload": {"filetypes": ["coffee"]}}
