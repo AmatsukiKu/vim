@@ -30,7 +30,7 @@ NeoBundleLazy 'mattn/learn-vimscript', {'autoload' : {'commands' : [ "help learn
 "UI Plugins
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neomru.vim'
-NeoBundleLazy 'Shougo/vimfiler', {'autoload' : {'function_prefix' : 'vimfiler', 'commands' : ['VimFiler']}}
+NeoBundleLazy 'Shougo/vimfiler', {'autoload' : {'function_prefix' : 'vimfiler', 'commands' : ['VimFiler', 'VimFilerTab']}}
 NeoBundleLazy 'Shougo/vimshell', {'autoload' : {'commands' : [ "VimShell" ] }}
 NeoBundleLazy 'ujihisa/vimshell-ssh', {'depends' : [ "Shougo/vimshell" ] }
 NeoBundle 'osyo-manga/vim-anzu'
