@@ -82,6 +82,8 @@ source $VIMRUNTIME/macros/matchit.vim
 syntax on
 
 set helplang=ja,en
+set undodir=$HOME/.vim/undo
+
 set nobackup
 set noswapfile
 set history=200

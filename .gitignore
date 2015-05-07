@@ -3,6 +3,7 @@
 .vim/.netrwhist
 .vim/.vimpos
 .vim/bundle/*
+.vim/undo/*
 !*.gitkeep
 .vim/doc/*
 .vim/view/*
