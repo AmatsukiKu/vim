@@ -57,11 +57,11 @@ NeoBundleLazy 'thinca/vim-quickrun', {'autoload' : {'commands' : [ "QuickRun" ] 
 
 "Web Development Plugins
 NeoBundleLazy 'mattn/emmet-vim',{"autoload": {"filetypes": ["html", "xhtml", "php", "eruby"]}}
-NeoBundleLazy 'tpope/vim-rails', {"autoload": {"filetypes": ["rb", "erb"]}}
-NeoBundleLazy 'basyura/unite-rails', {"autoload": {"filetypes": ["rb", "erb"]}}
+NeoBundleLazy 'tpope/vim-rails', {"autoload": {"filetypes": ["rb", "eruby"]}}
+NeoBundleLazy 'basyura/unite-rails', {"autoload": {"filetypes": ["rb", "eruby"]}}
 NeoBundleLazy 'kchmck/vim-coffee-script', {"autoload": {"filetypes": ["coffee"]}}
 NeoBundleLazy 'nono/jquery.vim', {"autoload": {"filetypes": ["js", "jquery"]}}
-NeoBundleLazy 'soh335/vim-ref-jquery', {"autoload": {"filetypes": ["js", "jquery", "html", "php", "erb", "coffee"]}}
+NeoBundleLazy 'soh335/vim-ref-jquery', {"autoload": {"filetypes": ["js", "jquery", "html", "xhtml", "php", "eruby", "coffee"]}}
 NeoBundleLazy 'slim-template/vim-slim', {"autoload": {"filetypes": ["slim"]}}
 NeoBundle 'lilydjwg/colorizer'
 NeoBundleLazy 'pasela/unite-webcolorname', {'depends' : [ "Shougo/unite.vim" ] }
