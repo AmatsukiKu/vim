@@ -327,7 +327,7 @@ unlet s:bundle
 
 let s:bundle = neobundle#get("emmet-vim")
 function! s:bundle.hooks.on_source(bundle)
-    let g:user_emmet_leader_key = '<c-z>'
+    let g:user_emmet_leader_key = '<C-z>'
 endfunction
 unlet s:bundle
 
