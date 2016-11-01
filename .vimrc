@@ -361,11 +361,6 @@ endfunction
 command! -nargs=0 -range URLEncode :<line1>,<line2>call <SID>URLEncode()
 command! -nargs=0 -range URLDecode :<line1>,<line2>call <SID>URLDecode()
 
-command! -count -nargs=1 ContinuousNumber let c = col('.')|for n in range(1, <count>?<count>-line('.'):1)|exec 'normal! j' . n . <q-args>|call cursor('.', c)|endfor
-vnoremap <silent> <C-a> :ContinuousNumber <C-a><CR>
-vnoremap <silent> <C-x> :ContinuousNumber <C-x><CR>
-
-
 function! ExUpLower()
     let l:currentChar = getline(".")[col(".")-1]
     if(match(l:currentChar,'\l')==0)
