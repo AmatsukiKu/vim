@@ -4,4 +4,4 @@ ln -s "${script_dir}/.gvimrc" ~/.gvimrc
 ln -s "${script_dir}/.vim" ~/.vim
 ln -s "${script_dir}/.vimperatorrc" ~/.vimperatorrc
 ln -s "${script_dir}/vimperator" ~/.vimperator
-git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+git clone https://github.com/Shougo/dein.vim ~/.vim/bundle/repos/github.com/Shougo/dein.vim

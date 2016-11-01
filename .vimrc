@@ -1,81 +1,78 @@
-set nocompatible "Vi compatible off, Vim feature on
+"dein Scripts-----------------------------
+set nocompatible  "Vi compatible off, Vim feature on
 
 set shellslash
 set fileformat=unix "改行をUnix形式に
 
-"Neobundle
 filetype off
 filetype plugin indent off
 if has('vim_starting')
-    set rtp+=~/.vim/bundle/neobundle.vim
+    set rtp^=~/.vim/bundle/repos/github.com/Shougo/dein.vim
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+call dein#begin(expand('~/.vim/bundle'))
 
 "Common Plugins
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
-NeoBundleLazy 'vim-scripts/sudo.vim', {'autoload' : {'commands' : [ "sudo" ] }}
-NeoBundleLazy 'tsukkee/unite-help', {'autoload' : {'commands' : [ "help" ] }}
-NeoBundleLazy 'mattn/learn-vimscript', {'autoload' : {'commands' : [ "help learn-vimscript" ] }}
+call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/vimproc', {'build' : 'make'})
+call dein#add('vim-scripts/sudo.vim', {'on_cmd' : 'sudo'})
+call dein#add('tsukkee/unite-help', {'on_cmd' : 'help'})
+call dein#add('mattn/learn-vimscript', {'on_cmd' : 'commands'})
 
 "UI Plugins
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundleLazy 'Shougo/vimfiler', {'autoload' : {'function_prefix' : 'vimfiler', 'commands' : ['VimFiler', 'VimFilerTab']}}
-NeoBundleLazy 'Shougo/vimshell', {'autoload' : {'commands' : [ "VimShell" ] }}
-NeoBundleLazy 'ujihisa/vimshell-ssh', {'depends' : [ "Shougo/vimshell" ] }
-NeoBundle 'osyo-manga/vim-anzu'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'vim-scripts/EasyMotion'
-NeoBundleLazy 'thinca/vim-ref', {'autoload' : {'commands' : [ "Ref" ] }}
-NeoBundle 'motemen/git-vim'
-NeoBundleLazy 'vimwiki', {'autoload' : {'function_prefix' : "vimwiki", 'commands' : ['VimwikiIndex', 'VimwikiTabIndex'] }}
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/vimfiler', {'on_map' : '<Plug>vimfiler-', 'on_cmd' : ['VimFiler', 'VimFilerTab']})
+call dein#add('Shougo/vimshell', {'on_cmd' : 'VimShell'})
+call dein#add('ujihisa/vimshell-ssh', {'depends' : 'vimshell' })
+call dein#add('osyo-manga/vim-anzu')
+call dein#add('itchyny/lightline.vim')
+call dein#add('vim-scripts/EasyMotion')
+call dein#add('thinca/vim-ref', {'lazy' : 1, 'on_cmd' : 'Ref' })
+call dein#add('motemen/git-vim')
+call dein#add('vimwiki', {'on_map' : 'vimwiki-', 'on_cmd' : ['VimwikiIndex', 'VimwikiTabIndex'] })
 
 "Visual Plugins
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'thinca/vim-fontzoom'
-NeoBundle 'tyru/current-func-info.vim'
+call dein#add('ujihisa/unite-colorscheme')
+call dein#add('thinca/vim-fontzoom')
+call dein#add('tyru/current-func-info.vim')
 
 "Edit Plugins
-NeoBundle 'kana/vim-smartinput'
-NeoBundleLazy 'Shougo/neocomplcache', {'autoload' : {'insert': 1 }}
-NeoBundleLazy 'Shougo/neosnippet-snippets', {'depends' : [ "Shougo/neocomplcache" ] }
-NeoBundleLazy 'Shougo/neosnippet', {'depends' : [ "Shougo/neosnippet-snippets" ] }
-NeoBundle 'The-NERD-Commenter'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'thinca/vim-qfreplace'
-NeoBundleLazy 'thinca/vim-quickrun', {'autoload' : {'commands' : [ "QuickRun" ] }}
+call dein#add('kana/vim-smartinput')
+call dein#add('Shougo/neocomplete', {'lazy' : 1, 'on_i' : 1})
+call dein#add('Shougo/neosnippet-snippets', {'lazy' : 1, 'on_i' : 1, 'depends' : 'neocomplete' })
+call dein#add('Shougo/neosnippet', {'lazy' : 1, 'on_i' : 1, 'depends' : 'neosnippet-snippets' })
+call dein#add('scrooloose/nerdcommenter')
+call dein#add('tpope/vim-surround')
+call dein#add('thinca/vim-qfreplace')
+call dein#add('thinca/vim-quickrun', {'on_cmd' : 'QuickRun'})
 
 "Web Development Plugins
-NeoBundleLazy 'mattn/emmet-vim',{"autoload": {"filetypes": ["html", "xhtml", "php", "eruby"]}}
-NeoBundleLazy 'tpope/vim-rails', {"autoload": {"filetypes": ["rb", "eruby"]}}
-NeoBundleLazy 'basyura/unite-rails', {"autoload": {"filetypes": ["rb", "eruby"]}}
-NeoBundleLazy 'kchmck/vim-coffee-script', {"autoload": {"filetypes": ["coffee"]}}
-NeoBundleLazy 'nono/jquery.vim', {"autoload": {"filetypes": ["js", "jquery"]}}
-NeoBundleLazy 'soh335/vim-ref-jquery', {"autoload": {"filetypes": ["js", "jquery", "html", "xhtml", "php", "eruby", "coffee"]}}
-NeoBundleLazy 'slim-template/vim-slim', {"autoload": {"filetypes": ["slim"]}}
-NeoBundle 'lilydjwg/colorizer'
-NeoBundleLazy 'pasela/unite-webcolorname', {'depends' : [ "Shougo/unite.vim" ] }
-NeoBundle 'koron/chalice'
+call dein#add('mattn/emmet-vim',{'lazy' : 1, 'on_ft': ['html', 'xhtml', 'php', 'eruby']})
+call dein#add('tpope/vim-rails', {'on_ft': ['rb', 'erb']})
+call dein#add('basyura/unite-rails', {'on_ft': ['rb', 'erb']})
+call dein#add('kchmck/vim-coffee-script', {'on_ft': ['coffee']})
+call dein#add('nono/jquery.vim', {'on_ft': ['js', 'jquery']})
+call dein#add('soh335/vim-ref-jquery', {'on_ft': ['js', 'jquery', 'html', 'php', 'erb', 'coffee']})
+call dein#add('slim-template/vim-slim', {'on_ft': 'slim'})
+call dein#add('lilydjwg/colorizer')
+call dein#add('pasela/unite-webcolorname', {'depends' : 'unite.vim'})
+call dein#add('koron/chalice')
 
 "Other Development
-NeoBundle 'msanders/cocoa.vim'
-NeoBundleLazy 'vim-scripts/Processing', {"autoload": {"filetypes": ["pde"]}}
-NeoBundleLazy 'sudar/vim-arduino-syntax', {"autoload": {"filetypes": ["ino"]}}
-NeoBundleLazy 'tclem/vim-arduino', {"autoload": {"filetypes": ["ino"]}}
+call dein#add('msanders/cocoa.vim')
+call dein#add('vim-scripts/Processing', {'on_ft': 'pde'})
+call dein#add('sudar/vim-arduino-syntax', {'on_ft': 'ino'})
+call dein#add('tclem/vim-arduino', {'on_ft': 'ino'})
 
-call neobundle#end()
+call dein#end()
 
 filetype plugin indent on
+"End dein Scripts-------------------------
+
+augroup MyAutoCmd
+    autocmd!
+augroup END"
 
 source $VIMRUNTIME/macros/matchit.vim
 
@@ -156,11 +153,13 @@ inoremap jj <ESC>
 cnoremap <C-h> <BS>
 cnoremap <C-l> <delete>
 
-nmap n <Plug>(anzu-n)
-nmap N <Plug>(anzu-N)
-nmap * <Plug>(anzu-star)
-nmap # <Plug>(anzu-sharp)
-nmap <ESC><ESC> :<C-u>nohlsearch<CR><Plug>(anzu-clear-search-status)
+if dein#tap('vim-anzu')
+    nmap n <Plug>(anzu-n)
+    nmap N <Plug>(anzu-N)
+    nmap * <Plug>(anzu-star)
+    nmap # <Plug>(anzu-sharp)
+    nmap <ESC><ESC> :<C-u>nohlsearch<CR><Plug>(anzu-clear-search-status)
+endif
 
 let g:lightline = {
     \ 'active': {
@@ -179,157 +178,149 @@ vnoremap <silent> * "vy/\V<C-r>=substitute(escape(@v,'\/'),"\n",'\\n','g')<CR><C
 let s:dataPath = $HOME.'/Dropbox/vim/tooldata/'
 
 " Unite Settings
-let g:unite_source_file_mru_limit = 200
-let g:unite_source_history_yank_enable = 1
-noremap <silent> <Space><Space> :Unite file_mru file directory_mru<Return>
-noremap <silent> <Space><S-Space> :Unite -no-quit file_mru file directory_mru<Return>
-noremap <Space>ub :<C-u>Unite bookmark buffer<Return>
-noremap <Space>uc :<C-u>Unite command<Return>
-noremap <Space>uy :<C-u>Unite history/yank<CR>
-"noremap <C-h> :<C-u>Unite help -start-insert<CR>
+if dein#tap('unite.vim')
+    let g:unite_source_file_mru_limit = 200
+    let g:unite_source_history_yank_enable = 1
+    noremap <silent> <Space><Space> :Unite file_mru file directory_mru<Return>
+    noremap <silent> <Space><S-Space> :Unite -no-quit file_mru file directory_mru<Return>
+    noremap <Space>ub :<C-u>Unite bookmark buffer<Return>
+    noremap <Space>uc :<C-u>Unite command<Return>
+    noremap <Space>uy :<C-u>Unite history/yank<CR>
+    "noremap <C-h> :<C-u>Unite help -start-insert<CR>
 
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-    imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-    nnoremap <silent><buffer><expr> t unite#do_action('tabopen')
-    nnoremap <silent><buffer><expr> r unite#do_action('right')
-    nnoremap <silent><buffer><expr> R unite#do_action('left')
-    nnoremap <silent><buffer><expr> ff unite#do_action('vimfiler')
-    nnoremap <silent><buffer><expr> ft unite#do_action('tabvimfiler')
-    nnoremap <silent><buffer><expr> c unite#do_action('project_cd')
-endfunction
-call unite#custom#profile('defulat', 'context', {
-    \ "ignorecase": 1,
-    \ "smartcase": 1,
-\ })
-
-
-let s:bundle = neobundle#get("vimfiler")
-function! s:bundle.hooks.on_source(bundle)
-    let g:vimfiler_external_copy_directory_command = 'cp -r $src $dest'
-    let g:vimfiler_external_copy_file_command = 'cp $src $dest'
-    let g:vimfiler_external_delete_command = 'rm -r $srcs'
-    let g:vimfiler_external_move_command = 'mv $srcs $dest'
-    " Enable file operation commands.
-    let g:vimfiler_safe_mode_by_default = 0
-    autocmd FileType vimfiler call s:vimfiler_my_setting()
-    function! s:vimfiler_my_setting()
-        nnoremap <silent><buffer><expr> n vimfiler#do_action('tabopen')
+    autocmd FileType unite call s:unite_my_settings()
+    function! s:unite_my_settings()
+        imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
+        nnoremap <silent><buffer><expr> t unite#do_action('tabopen')
+        nnoremap <silent><buffer><expr> r unite#do_action('right')
+        nnoremap <silent><buffer><expr> R unite#do_action('left')
+        nnoremap <silent><buffer><expr> ff unite#do_action('vimfiler')
+        nnoremap <silent><buffer><expr> ft unite#do_action('tabvimfiler')
+        nnoremap <silent><buffer><expr> c unite#do_action('project_cd')
     endfunction
-endfunction
-unlet s:bundle
 
-let s:bundle = neobundle#get("neocomplcache")
-function! s:bundle.hooks.on_source(bundle)
-    " Disable AutoComplPop.
-    let g:acp_enableAtStartup = 0
-    " Use neocomplcache.
-    let g:neocomplcache_enable_at_startup = 1
-    " Use smartcase.
-    let g:neocomplcache_enable_smart_case = 1
-    " Use camel case completion.
-    let g:neocomplcache_enable_camel_case_completion = 1
-    " Use underbar completion.
-    let g:neocomplcache_enable_underbar_completion = 1
-    " Set minimum syntax keyword length.
-    let g:neocomplcache_min_syntax_length = 3
-    let g:neocomplcache_disable_select_mode_mappings = 0
-    let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-    "Use quick_match
-    "let g:neocomplcache_enable_quick_match = 1
-    "Use neocomplcache ignore another
-    let g:neocomplcache_force_overwrite_completefunc = 1
+    call unite#custom#profile('defulat', 'context', {
+        \ "ignorecase": 1,
+        \ "smartcase": 1,
+    \ })
+endif
 
-    " Define dictionary.
-    let g:neocomplcache_dictionary_filetype_lists = {
-        \ 'default' : '',
-        \ 'vimshell' : $HOME.'/.vimshell_hist',
-        \ 'scheme' : $HOME.'/.gosh_completions'
-            \ }
+if dein#tap('vimfiler')
+    function! s:vimfiler_on_source() abort
+        let g:vimfiler_external_copy_directory_command = 'cp -r $src $dest'
+        let g:vimfiler_external_copy_file_command = 'cp $src $dest'
+        let g:vimfiler_external_delete_command = 'rm -r $srcs'
+        let g:vimfiler_external_move_command = 'mv $srcs $dest'
+        " Enable file operation commands.
+        call vimfiler#custom#profile('default', 'context', {'safe' : 0})
+        function! s:vimfiler_my_setting()
+            nnoremap <silent><buffer><expr> n vimfiler#do_action('split')
+        endfunction
+        autocmd FileType vimfiler call s:vimfiler_my_setting()
+    endfunction
+    call dein#source('Shougo/vimfiler', {'hook_source': function('s:vimfiler_on_source')})
+endif
 
-    " Define keyword.
-    if !exists('g:neocomplcache_keyword_patterns')
-        let g:neocomplcache_keyword_patterns = {}
-    endif
-    let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+if dein#tap("neocomplete")
+    function! s:neocomplete_on_source() abort
+        " Use neocomplete.
+        let g:neocomplete#enable_at_startup = 1
+        " Use smartcase.
+        let g:neocomplete#enable_smart_case = 1
+        " Set minimum syntax keyword length.
+        let g:neocomplete#sources#syntax#min_keyword_length = 3
+        let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-    " Plugin key-mappings.
-    imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-    smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-    inoremap <expr><C-g>     neocomplcache#undo_completion()
-    inoremap <expr><C-k>     neocomplcache#complete_common_string()
+        " Define dictionary.
+        let g:neocomplete#sources#dictionary#dictionaries = {
+            \ 'default' : '',
+            \ 'vimshell' : $HOME.'/.vimshell_hist',
+            \ 'scheme' : $HOME.'/.gosh_completions'
+                \ }
 
-    " SuperTab like snippets behavior.
-    "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+        " Define keyword.
+        if !exists('g:neocomplete#keyword_patterns')
+            let g:neocomplete#keyword_patterns = {}
+        endif
+        let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-    " Recommended key-mappings.
-    " <CR>: close popup and save indent.
-    inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-    " <TAB>: completion.
-    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-    inoremap <expr><C-y>  neocomplcache#close_popup()
-    inoremap <expr><C-e>  neocomplcache#cancel_popup()
+        " Plugin key-mappings.
+        inoremap <expr><C-g>     neocomplete#undo_completion()
+        inoremap <expr><C-l>     neocomplete#complete_common_string()
 
-    " AutoComplPop like behavior.
-    "let g:neocomplcache_enable_auto_select = 1
+        " Recommended key-mappings.
+        " <CR>: close popup and save indent.
+        inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+        function! s:my_cr_function()
+          return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+          " For no inserting <CR> key.
+          "return pumvisible() ? "\<C-y>" : "\<CR>"
+        endfunction
+        " <TAB>: completion.
+        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+        " <C-h>, <BS>: close popup and delete backword char.
+        inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+        inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+        " Close popup by <Space>.
+        "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
-    " Shell like behavior(not recommended).
-    "set completeopt+=longest
-    "let g:neocomplcache_enable_auto_select = 1
-    "let g:neocomplcache_disable_auto_complete = 1
-    "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-    "inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+        " AutoComplPop like behavior.
+        "let g:neocomplete#enable_auto_select = 1
 
-    " Enable omni completion.
-    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-    autocmd FileType html,xhtml,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+        " Shell like behavior(not recommended).
+        "set completeopt+=longest
+        "let g:neocomplete#enable_auto_select = 1
+        "let g:neocomplete#disable_auto_complete = 1
+        "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
 
-    " Enable heavy omni completion.
-    if !exists('g:neocomplcache_omni_patterns')
-        let g:neocomplcache_omni_patterns = {}
-    endif
-    "let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-    "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-    let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-    let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-    let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-endfunction
-unlet s:bundle
+        " Enable omni completion.
+        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+        " Enable heavy omni completion.
+        if !exists('g:neocomplete#sources#omni#input_patterns')
+          let g:neocomplete#sources#omni#input_patterns = {}
+        endif
+        "let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+        "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+        "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-let s:bundle = neobundle#get("EasyMotion")
-function! s:bundle.hooks.on_source(bundle)
+        " For perlomni.vim setting.
+        " https://github.com/c9s/perlomni.vim
+        let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+    endfunction
+    call dein#set_hook('neocomplete', 'hook_source', function('s:neocomplete_on_source'))
+endif
+
+if dein#tap('EasyMotion')
     let g:EasyMotion_leader_key = '<Space>'
     let g:EasyMotion_keys = 'asdfjkl;gheiwovnqp'
-endfunction
-unlet s:bundle
+endif
 
-let s:bundle = neobundle#get("vim-ref")
-function! s:bundle.hooks.on_source(bundle)
-    "ref.vimの設定
-    let g:ref_source_webdict_sites = {
-    \   'wikipedia:ja': 'http://ja.wikipedia.org/wiki/%s',
-    \   'alc': {'url': 'http://eow.alc.co.jp/search?q=%s', 'line': 42},
-    \ }
+if dein#tap('vim-ref')
+    function! s:vim_ref_on_source() abort
+        "ref.vimの設定
+        let g:ref_source_webdict_sites = {
+        \   'wikipedia:ja': 'http://ja.wikipedia.org/wiki/%s',
+        \   'alc': {'url': 'http://eow.alc.co.jp/search?q=%s', 'line': 42},
+        \ }
 
-    let g:ref_jquery_path = s:dataPath.'jqapi-latest/docs/'
-    let g:ref_phpmanual_path = s:dataPath.'phpmanual/php-chunked-xhtml/'
-    let g:neosnippet#snippets_directory = $HOME.'/.vim//snippets'
-endfunction
-unlet s:bundle
+        let g:ref_jquery_path = s:dataPath.'jqapi-latest/docs/'
+        let g:ref_phpmanual_path = s:dataPath.'phpmanual/php-chunked-xhtml/'
+        let g:neosnippet#snippets_directory = $HOME.'/.vim//snippets'
+    endfunction
+    call dein#set_hook('vim-ref', 'hook_source', function('s:vim_ref_on_source'))
+endif
 
-let s:bundle = neobundle#get("emmet-vim")
-function! s:bundle.hooks.on_source(bundle)
-    let g:user_emmet_leader_key = '<C-z>'
-endfunction
-unlet s:bundle
-
+if dein#tap('emmet-vim')
+    function! s:emmet_vim_on_source() abort
+        let g:user_emmet_leader_key = '<c-z>'
+    endfunction
+    call dein#set_hook('emmet-vim', 'hook_source', function('s:emmet_vim_on_source'))
+endif
 
 "syntax
 "
@@ -344,7 +335,6 @@ endfunction
 
 let g:vimwiki_list = [{'path': s:dataPath.'vimwiki', 'path_html': s:dataPath.'vimwiki/html'}]
 autocmd FileType php :setlocal dictionary=<expr>s:dataPath.'wordpress.dict'
-
 
 "URL encode and decode via chalice
 function! s:URLEncode()
