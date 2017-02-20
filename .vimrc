@@ -129,7 +129,7 @@ elseif has("gui_running")
 endif
 
 "マッピング設定
-nnoremap <C-e> :<C-u>Ref webdict alc 
+nnoremap <C-e> :<C-u>Ref webdict alc<Space>
 noremap <silent> <leader>s :NeoSnippetEdit<CR>
 
 noremap <Space>vs :<C-u>VimShell<Return>
@@ -199,7 +199,7 @@ if dein#tap('unite.vim')
         nnoremap <silent><buffer><expr> c unite#do_action('project_cd')
     endfunction
 
-    call unite#custom#profile('defulat', 'context', {
+    call unite#custom#profile('default', 'context', {
         \ "ignorecase": 1,
         \ "smartcase": 1,
     \ })
@@ -332,6 +332,12 @@ function! GL_mode()
   "set dictionary+=~/vimfiles/dict/opengl
 endfunction
 
+function! s:FixWhitespace()
+    let l:save_cursor = getpos(".")
+    silent! execute ':%s/\\\@<!\s\+$//'
+    call setpos('.', l:save_cursor)
+endfunction
+autocmd BufWritePre * call s:FixWhitespace()
 
 let g:vimwiki_list = [{'path': s:dataPath.'vimwiki', 'path_html': s:dataPath.'vimwiki/html'}]
 autocmd FileType php :setlocal dictionary=<expr>s:dataPath.'wordpress.dict'
