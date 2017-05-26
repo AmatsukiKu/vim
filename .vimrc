@@ -181,6 +181,11 @@ let s:dataPath = $HOME.'/Dropbox/vim/tooldata/'
 if dein#tap('unite.vim')
     let g:unite_source_file_mru_limit = 200
     let g:unite_source_history_yank_enable = 1
+    if executable('hw')
+        let g:unite_source_grep_command = 'hw'
+        let g:unite_source_grep_default_opts = '--no-group --no-color'
+        let g:unite_source_grep_recursive_opt = ''
+    endif
     noremap <silent> <Space><Space> :Unite file_mru file directory_mru<Return>
     noremap <silent> <Space><S-Space> :Unite -no-quit file_mru file directory_mru<Return>
     noremap <Space>ub :<C-u>Unite bookmark buffer<Return>
