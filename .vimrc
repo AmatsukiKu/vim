@@ -30,7 +30,6 @@ call dein#add('itchyny/lightline.vim')
 call dein#add('vim-scripts/EasyMotion')
 call dein#add('thinca/vim-ref', {'lazy' : 1, 'on_cmd' : 'Ref' })
 call dein#add('motemen/git-vim')
-call dein#add('vimwiki', {'on_map' : 'vimwiki-', 'on_cmd' : ['VimwikiIndex', 'VimwikiTabIndex'] })
 
 "Visual Plugins
 call dein#add('ujihisa/unite-colorscheme')
@@ -60,7 +59,6 @@ call dein#add('pasela/unite-webcolorname', {'depends' : 'unite.vim'})
 call dein#add('koron/chalice')
 
 "Other Development
-call dein#add('msanders/cocoa.vim')
 call dein#add('vim-scripts/Processing', {'on_ft': 'pde'})
 call dein#add('sudar/vim-arduino-syntax', {'on_ft': 'ino'})
 call dein#add('tclem/vim-arduino', {'on_ft': 'ino'})
