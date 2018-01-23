@@ -184,10 +184,12 @@ if dein#tap('unite.vim')
         let g:unite_source_grep_default_opts = '--no-group --no-color'
         let g:unite_source_grep_recursive_opt = ''
     endif
-    noremap <silent> <Space><Space> :Unite file_mru file directory_mru<Return>
-    noremap <silent> <Space><S-Space> :Unite -no-quit file_mru file directory_mru<Return>
-    noremap <Space>ub :<C-u>Unite bookmark buffer<Return>
-    noremap <Space>uc :<C-u>Unite command<Return>
+    noremap <silent> <Space><Space> :Unite file_mru file directory_mru<CR>
+    noremap <silent> <Space><S-Space> :Unite -no-quit file_mru file directory_mru<CR>
+    noremap <silent> <Space>/ :silent UniteWithCurrentDir grep<CR>
+    noremap <silent> <Space>o :silent UniteWithCurrentDir find<CR>
+    noremap <Space>ub :<C-u>Unite bookmark buffer<CR>
+    noremap <Space>uc :<C-u>Unite command<CR>
     noremap <Space>uy :<C-u>Unite history/yank<CR>
     "noremap <C-h> :<C-u>Unite help -start-insert<CR>
 
